@@ -34,4 +34,8 @@ public class InteractableItem : MonoBehaviour
     {
 
     }
+    public void Exit()
+    {
+
+    }
 }
