@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/GameController.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Player/GameController.inputactions'
 
 using System;
 using System.Collections;
@@ -46,7 +46,7 @@ public class @GameController : IInputActionCollection, IDisposable
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""66a0a279-18d3-422d-8784-eaf8420b9aeb"",
-                    ""expectedControlType"": ""Stick"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -65,12 +65,100 @@ public class @GameController : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1cd5e8de-5f9d-48a3-afd0-ec0b1e976a18"",
-                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""id"": ""e9e5a61c-de2e-45bb-bb8a-640537a17e0f"",
+                    ""path"": ""<HID::HORI CO.,LTD. HORIPAD mini4>/button7"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Controllers"",
+                    ""groups"": """",
                     ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9eadad0f-d7ff-478c-8888-a6148185b3f6"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e4764e5-e873-45fa-957a-99668f38144f"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""69593552-e4bb-46a3-ae3e-4970be6b2579"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""3176a9f3-6f35-4e55-bf0e-7c0a8b25f8fd"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""fa61f117-1595-4f07-9c45-b83ca5668a38"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""30c32c35-2e10-4dbb-904c-1d1b88106e57"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""524856ef-34a3-4557-8c13-03daa4588a92"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd0646bf-f3b8-437e-9f10-20ff47a96ea4"",
+                    ""path"": ""<Joystick>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -87,33 +175,55 @@ public class @GameController : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2e4764e5-e873-45fa-957a-99668f38144f"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""id"": ""8906c43d-32e4-44c8-8238-e0e26f64aa63"",
+                    ""path"": ""<Joystick>/trigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2ac89549-b2cd-45dd-8a42-673389e99de8"",
-                    ""path"": ""<XInputController>/leftShoulder"",
+                    ""id"": ""37d0f08d-dfac-45b5-b74d-2597b0a7295b"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Controllers"",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""182e976e-edf5-410c-a7f4-f74346e576ca"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""27ef11bc-47a2-4e8d-b4b0-d519d422c81b"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""id"": ""e9b2642f-3a71-4ce4-b270-43f56d09f367"",
+                    ""path"": ""<HID::HORI CO.,LTD. HORIPAD mini4>/button5"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Controllers"",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf6afa31-5937-4505-8839-25d469776b60"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -121,29 +231,7 @@ public class @GameController : IInputActionCollection, IDisposable
             ]
         }
     ],
-    ""controlSchemes"": [
-        {
-            ""name"": ""Controllers"",
-            ""bindingGroup"": ""Controllers"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<Gamepad>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                },
-                {
-                    ""devicePath"": ""<XInputController>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                },
-                {
-                    ""devicePath"": ""<DualShockGamepad>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                }
-            ]
-        }
-    ]
+    ""controlSchemes"": []
 }");
         // PlayerControls
         m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
@@ -253,15 +341,6 @@ public class @GameController : IInputActionCollection, IDisposable
         }
     }
     public PlayerControlsActions @PlayerControls => new PlayerControlsActions(this);
-    private int m_ControllersSchemeIndex = -1;
-    public InputControlScheme ControllersScheme
-    {
-        get
-        {
-            if (m_ControllersSchemeIndex == -1) m_ControllersSchemeIndex = asset.FindControlSchemeIndex("Controllers");
-            return asset.controlSchemes[m_ControllersSchemeIndex];
-        }
-    }
     public interface IPlayerControlsActions
     {
         void OnCrouch(InputAction.CallbackContext context);
