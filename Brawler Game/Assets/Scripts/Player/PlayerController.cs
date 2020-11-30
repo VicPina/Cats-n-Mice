@@ -17,14 +17,17 @@ public class PlayerController : MonoBehaviour
 
     public GameObject standingMesh, crouchingMesh, defeatedMesh;
     [SerializeField]
-    private GameObject pickedItem, inRangeItem;
+    private GameObject pickedItem, inRangeObject;
     
     private float bxCSize, bxCCenter, exposure;
     private float speed = 1.5f;
-    public bool mayInteract;
+    public bool mayInteract, inSight;
+
+    [SerializeField]
+    private LayerMask buildingMask, catMask;
+    private Transform cat;
 
     private Vector2 leftStickValue;
-    private Vector3 spawner;
 
     #region Inputs
     public void OnMove(InputAction.CallbackContext callback)
@@ -52,14 +55,8 @@ public class PlayerController : MonoBehaviour
     }
     public void Running(InputAction.CallbackContext callback)
     {
-        if (callback.phase == InputActionPhase.Performed)
-        {
-            speed = 2.5f;
-        }
-        else
-        {
-            speed = 1.5f;
-        }
+        if (callback.phase == InputActionPhase.Performed) { speed = 2.5f; }
+        else {  speed = 1.5f; }
     }
     public void Interact(InputAction.CallbackContext callback)
     {
@@ -67,14 +64,14 @@ public class PlayerController : MonoBehaviour
         {
             if (mayInteract)
             {
-                if (inRangeItem.GetComponent<InteractableItem>().pickable)
+                if (inRangeObject.GetComponent<InteractableItem>().pickable)
                 {
-                    pickedItem = inRangeItem;
-                    inRangeItem.SetActive(false);
+                    pickedItem = inRangeObject.GetComponent<InteractableItem>().itemPrefab;
+                    inRangeObject.SetActive(false);
                 }
                 else
                 {
-                    inRangeItem.GetComponent<InteractableItem>().Interaction();
+                    inRangeObject.GetComponent<InteractableItem>().Interaction();
                 }
             }
         }
@@ -95,42 +92,34 @@ public class PlayerController : MonoBehaviour
     }
     public void IsExposed()
     {
-        exposure += (0.2f * 0.01f);
+        Vector3 dirToCat = (cat.position - transform.position).normalized;
+
+        Ray catFov = new Ray(transform.position, dirToCat);
+        RaycastHit hit;
+        if (Physics.Raycast(catFov, out hit))
+        {
+            if (hit.collider.gameObject.layer == catMask)
+            {
+                Debug.DrawLine(catFov.origin, hit.point, Color.red);
+                exposure += (0.2f * 0.01f);
+            }
+            else if (hit.collider.gameObject.layer == buildingMask)
+            {
+                Debug.DrawLine(catFov.origin, hit.point, Color.yellow);
+            }
+        }
     }
 
     private void OnEnable()
     {
-       controls.Enable();
-
        Debug.Log("Player " + user.playerIndex + " Joined!!");
-
-        gameObject.transform.position = spawner;
     }
 
     private void Awake()
     {
-        spawner = new Vector3(-3.908f, 3.54f, -10.322f);
         user = GetComponent<PlayerInput>();
         exposure = 0f;
-
-        crouchingMesh.GetComponent<MeshRenderer>().enabled = false;
-
-        /*/ Input mapping
-        controls = new GameController();
-        
-        controls.PlayerControls.Crouch.performed += context => Crouching();
-        controls.PlayerControls.Crouch.canceled += context => NotCrouching();
-        
-        controls.PlayerControls.Move.performed += context => leftStickValue = context.ReadValue<Vector2>();
-        controls.PlayerControls.Move.canceled += context => leftStickValue = Vector2.zero;
-        
-        controls.PlayerControls.Interact.started += context => { if (mayInteract) { Interact(); } };
-        
-        controls.PlayerControls.Run.started += context => { speed = 2f; };
-        controls.PlayerControls.Run.canceled += context => { speed = 1.5f; };
-        */
     }
-
 
     // Update is called once per frame
     private void Update()
@@ -141,10 +130,9 @@ public class PlayerController : MonoBehaviour
 
         ExposureMeter.value = exposure;
 
-        if (ExposureMeter.value >= 2) 
-        {
-            Defeated();
-        }
+        if (inSight) { IsExposed(); }
+
+        if (ExposureMeter.value >= 2) { Defeated(); }
 
         /*
         xAxis = Input.GetAxis("Horizontal");
@@ -171,20 +159,14 @@ public class PlayerController : MonoBehaviour
     { 
         if(other.tag == "Interactable")
         {
-            if (other.gameObject.GetComponent<InteractableItem>().pickable)
-            {
-                inRangeItem = other.gameObject;
-                other.gameObject.GetComponent<InteractableItem>().affected = gameObject;
-            }
-            else
-            {
-                other.gameObject.GetComponent<InteractableItem>().Interaction();
-            }
+            mayInteract = true;
+            inRangeObject = other.gameObject;
+            inRangeObject.GetComponent<InteractableItem>().affectePlayer = gameObject;
         }
         if (other.tag == "CatFOV")
         {
-            GetComponent<Raycaster>().enabled = true;
-            GetComponent<Raycaster>().cat = other.transform;
+            inSight = true;
+            cat = other.gameObject.transform;
         }
     }
     public void OnTriggerExit(Collider other) 
@@ -193,9 +175,14 @@ public class PlayerController : MonoBehaviour
         {
             mayInteract = false; 
         }
-        if (other.tag == "CatFOV")
+        else if (other.tag == "CatFOV")
         {
-            GetComponent<Raycaster>().enabled = false;
+            inSight = false;
+        }
+        else if (other.tag == "Exit")
+        {
+            string playerLabel = ("Player " + user.playerIndex + " Won!!");
+            other.gameObject.GetComponent<ExitManager>().Winner(playerLabel);
         }
     }
     

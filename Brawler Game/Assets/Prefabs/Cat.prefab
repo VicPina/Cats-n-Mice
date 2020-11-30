@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7216910751534651166}
   - component: {fileID: 7478901224684646167}
-  - component: {fileID: 7782549503452106749}
   - component: {fileID: 8436011313159464982}
   - component: {fileID: 1961841023514328700}
   m_Layer: 8
@@ -47,28 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04c0af36c9d3fec4999607bd605e741f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visiblePlayers: []
---- !u!114 &7782549503452106749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7216910751534651167}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15fe5b5e8647ce742a13335010c42a2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  veiwRadius: 5
-  viewAngle: 360
-  playerMask:
-    serializedVersion: 2
-    m_Bits: 1024
-  buildingMask:
-    serializedVersion: 2
-    m_Bits: 512
-  visiblePlayers: []
 --- !u!135 &8436011313159464982
 SphereCollider:
   m_ObjectHideFlags: 0

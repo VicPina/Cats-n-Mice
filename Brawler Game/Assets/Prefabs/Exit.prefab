@@ -10,10 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3723528626187421237}
   - component: {fileID: 8531674480328826849}
-  - component: {fileID: 6355000666146286983}
+  - component: {fileID: 1245896984438369582}
+  - component: {fileID: 2674628400824920562}
+  - component: {fileID: 7665127605970490994}
   m_Layer: 0
   m_Name: Exit
-  m_TagString: Untagged
+  m_TagString: Exit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,8 +47,21 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 0.25, z: 2}
-  m_Center: {x: -0.5, y: -0.1, z: -1}
---- !u!114 &6355000666146286983
+  m_Center: {x: -0.5, y: -0.15, z: -1}
+--- !u!65 &1245896984438369582
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5440614827672202848}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 2}
+  m_Center: {x: -0.5, y: 1.5, z: -1}
+--- !u!114 &2674628400824920562
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,20 +70,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 5440614827672202848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26a4dc30b58a4c84e896d5b90f5058ce, type: 3}
+  m_Script: {fileID: 11500000, guid: c4732ea38f731b14c90203b60342f5b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickable: 0
-  ladder: 0
-  exit: 0
-  catapult: 0
-  duration: 0
-  range: 0
-  sfx: {fileID: 0}
-  affected: {fileID: 0}
-  DefaultAction:
-    m_PersistentCalls:
-      m_Calls: []
+--- !u!114 &7665127605970490994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5440614827672202848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f8ddd7c6174f44f9325f01ece48a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7845015945781729305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124,6 +140,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23023224216122532, guid: 71603a6e66ae486469f72bae2aef45a6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6968e89851431104b8f931c37d69356b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71603a6e66ae486469f72bae2aef45a6, type: 3}
 --- !u!4 &7840302416072207095 stripped

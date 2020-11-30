@@ -288,7 +288,6 @@ GameObject:
   - component: {fileID: 734093051604787604}
   - component: {fileID: 4538124433836838570}
   - component: {fileID: 1497433861452417658}
-  - component: {fileID: 6431020467513052882}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -360,9 +359,15 @@ MonoBehaviour:
   crouchingMesh: {fileID: 7227508917851125894}
   defeatedMesh: {fileID: 5643390742952680330}
   pickedItem: {fileID: 0}
-  inRangeItem: {fileID: 0}
+  inRangeObject: {fileID: 0}
   mayInteract: 0
   inSight: 0
+  buildingMask:
+    serializedVersion: 2
+    m_Bits: 512
+  catMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &1497433861452417658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,25 +462,6 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &6431020467513052882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7226268419361476019}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e03d7b7650689bf4bb55d28a4a88c261, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildingMask:
-    serializedVersion: 2
-    m_Bits: 768
-  catMask:
-    serializedVersion: 2
-    m_Bits: 256
-  cat: {fileID: 0}
 --- !u!1 &7226268419387246579
 GameObject:
   m_ObjectHideFlags: 0

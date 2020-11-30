@@ -8,7 +8,7 @@ public class CatController : MonoBehaviour
 
     private void Update()
     {
-        transform.Rotate(0f,.5f,0, Space.Self);
+        //transform.Rotate(0f,.5f,0, Space.Self);
         /*
         int catLayer = 1 << 8;
         catLayer = ~catLayer;
