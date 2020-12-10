@@ -47,11 +47,11 @@ public class InteractableItem : MonoBehaviour
     }
     public void Mechanism()
     {
-
+        affectedMechanism.SetActive(false);
     }
     public void Catapult()
     {
-        Vector3 newPosition = new Vector3(affectePlayer.transform.position.x - 1f, affectePlayer.transform.position.y, affectePlayer.transform.position.z + 5f);
+        Vector3 newPosition = affectedMechanism.transform.position;
         affectePlayer.transform.position = newPosition;
     }
 }

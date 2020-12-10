@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExitManager : MonoBehaviour
 {
-    public void Winner(string player)
+    public void Winner()
     {
         GetComponent<ScreenManager>().GoToScene("Menu");
     }

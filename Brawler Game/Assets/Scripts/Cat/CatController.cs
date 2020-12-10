@@ -1,32 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class CatController : MonoBehaviour
 {
+    private bool changeDir;
 
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "DirSwitch")
+        {
+            changeDir = !changeDir;
+        }
+    }
     private void Update()
     {
-        //transform.Rotate(0f,.5f,0, Space.Self);
         /*
-        int catLayer = 1 << 8;
-        catLayer = ~catLayer;
-        
-        RaycastHit hit;
-       
-        
-           if (Physics.Raycast(ray, out hit, 5))
-           {
-               Debug.DrawRay(ray.origin, hit.point, Color.yellow);
-               if (hit.collider.gameObject.tag == "Player")
-               {
-                   Debug.DrawRay(ray.origin, hit.point, Color.red);
-                   hit.collider.gameObject.GetComponent<PlayerController>().IsExposed();
-               }
-           }
-           else { Debug.DrawRay(ray.origin, ray.origin + ray.direction * 5, Color.white); }
-        
+        if (changeDir) { transform.Translate(Vector3.right * 0.25f * Time.deltaTime); }
+        else if (!changeDir) { transform.Translate(Vector3.left * 0.25f * Time.deltaTime); }
         */
     }
 }

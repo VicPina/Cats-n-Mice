@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class Raycaster : MonoBehaviour
 {
-    public LayerMask buildingMask, catMask;
+    public bool confirmation;
+    public LayerMask fovMask;
     public Transform cat;
-
     // Update is called once per frame
     void Update()
     {
-        GetComponent<PlayerController>().IsExposed();
         Vector3 dirToCat = (cat.position - transform.position).normalized;
-
-        Ray catFov = new Ray(transform.position, dirToCat);
+        var dstToCat = Vector3.Distance(transform.position, cat.position);
+        Ray catFov = new Ray(transform.position, dirToCat * 5);
         RaycastHit hit;
-        if (Physics.Raycast(catFov, out hit))
+        //        Debug.DrawLine(transform.position, dirToCat + transform.position, Color.white);
+        //      Debug.DrawRay(catFov.origin, dirToCat, Color.white);
+        if (Physics.Raycast(catFov, out hit, dstToCat, fovMask)) 
         {
-            if (hit.collider.gameObject.layer == catMask)
+            if (hit.collider.gameObject.tag == "Building")
             {
-                Debug.DrawLine(catFov.origin, hit.point, Color.red);
+                Debug.DrawRay(catFov.origin, dirToCat * hit.distance, Color.yellow);
+                confirmation = false;
             }
-        }
-        else
-        {
-            if (hit.collider.gameObject.layer == buildingMask)
+            else if (hit.collider.gameObject.tag=="CatFOV")
             {
-                Debug.DrawLine(catFov.origin, hit.point, Color.yellow);
+                confirmation = true;
+                Debug.DrawRay(catFov.origin, dirToCat * hit.distance, Color.red);
             }
         }
     }

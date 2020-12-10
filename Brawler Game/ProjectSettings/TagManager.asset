@@ -7,6 +7,8 @@ TagManager:
   - Interactable
   - CatFOV
   - Exit
+  - Building
+  - DirSwitch
   layers:
   - Default
   - TransparentFX
@@ -16,9 +18,9 @@ TagManager:
   - UI
   - 
   - 
-  - Cat
-  - Building
-  - Player
+  - FOV
+  - 
+  - 
   - 
   - 
   - 

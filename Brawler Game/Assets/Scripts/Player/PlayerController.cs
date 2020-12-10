@@ -19,15 +19,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject pickedItem, inRangeObject;
     
-    private float bxCSize, bxCCenter, exposure;
+    private float bxCSizeY, bxCenterY, exposure;
     private float speed = 1.5f;
     public bool mayInteract, inSight;
 
-    [SerializeField]
-    private LayerMask buildingMask, catMask;
-    private Transform cat;
-
     private Vector2 leftStickValue;
+    private Vector3 bxCenter;
+    private Vector3 bxSize;
 
     #region Inputs
     public void OnMove(InputAction.CallbackContext callback)
@@ -39,16 +37,20 @@ public class PlayerController : MonoBehaviour
         if (callback.phase == InputActionPhase.Performed)
         {
             speed = 1f;
-            bxCSize = 0.75f;
-            bxCCenter = 0.45f;
+            bxCSizeY = 0.75f;
+            bxCenterY = 0.45f;
+            bxCenter.y = bxCenterY;
+            bxSize.y = bxCSizeY;
             crouchingMesh.GetComponent<MeshRenderer>().enabled = true;
             standingMesh.GetComponent<MeshRenderer>().enabled = false;
         }
         else
         {
             speed = 1.5f;
-            bxCSize = 1.75f;
-            bxCCenter = 0.9f;
+            bxCSizeY = 1.75f;
+            bxCenterY = 0.9f;
+            bxCenter.y = bxCenterY;
+            bxSize.y = bxCSizeY;
             crouchingMesh.GetComponent<MeshRenderer>().enabled = false;
             standingMesh.GetComponent<MeshRenderer>().enabled = true;
         }
@@ -90,35 +92,19 @@ public class PlayerController : MonoBehaviour
            playerColour.material = material;
        }
     }
-    public void IsExposed()
-    {
-        Vector3 dirToCat = (cat.position - transform.position).normalized;
-
-        Ray catFov = new Ray(transform.position, dirToCat);
-        RaycastHit hit;
-        if (Physics.Raycast(catFov, out hit))
-        {
-            if (hit.collider.gameObject.layer == catMask)
-            {
-                Debug.DrawLine(catFov.origin, hit.point, Color.red);
-                exposure += (0.2f * 0.01f);
-            }
-            else if (hit.collider.gameObject.layer == buildingMask)
-            {
-                Debug.DrawLine(catFov.origin, hit.point, Color.yellow);
-            }
-        }
-    }
+    public void IsExposed() { if (GetComponentInChildren<Raycaster>().confirmation) { exposure += (0.2f * 0.01f); } }
 
     private void OnEnable()
     {
        Debug.Log("Player " + user.playerIndex + " Joined!!");
     }
-
     private void Awake()
     {
         user = GetComponent<PlayerInput>();
         exposure = 0f;
+
+        bxCenter = GetComponent<BoxCollider>().center;
+        bxSize = GetComponent<BoxCollider>().size;
     }
 
     // Update is called once per frame
@@ -127,6 +113,10 @@ public class PlayerController : MonoBehaviour
         // Move character
         Vector3 moveValues = new Vector3(leftStickValue.x, 0, leftStickValue.y);
         transform.Translate(moveValues * speed * Time.deltaTime);
+
+        GetComponent<BoxCollider>().center = bxCenter;
+        GetComponent<BoxCollider>().size = bxSize;
+        GetComponentInChildren<Raycaster>().gameObject.transform.localPosition = bxCenter;
 
         ExposureMeter.value = exposure;
 
@@ -166,7 +156,8 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "CatFOV")
         {
             inSight = true;
-            cat = other.gameObject.transform;
+            GetComponentInChildren<Raycaster>().enabled = true;
+            GetComponentInChildren<Raycaster>().cat = other.transform;
         }
     }
     public void OnTriggerExit(Collider other) 
@@ -178,17 +169,18 @@ public class PlayerController : MonoBehaviour
         else if (other.tag == "CatFOV")
         {
             inSight = false;
+            GetComponentInChildren<Raycaster>().enabled = false;
         }
         else if (other.tag == "Exit")
         {
             string playerLabel = ("Player " + user.playerIndex + " Won!!");
-            other.gameObject.GetComponent<ExitManager>().Winner(playerLabel);
+            other.gameObject.GetComponent<ExitManager>().Winner();
         }
     }
     
     private void OnDisable()
     {
-        controls.Disable();
+        //controls.Disable();
     }
 
     

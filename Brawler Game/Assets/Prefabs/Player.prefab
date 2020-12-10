@@ -310,6 +310,7 @@ Transform:
   - {fileID: 7225975047637154422}
   - {fileID: 7225798485866856758}
   - {fileID: 5639996778803942802}
+  - {fileID: 8277509068330326977}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -362,12 +363,6 @@ MonoBehaviour:
   inRangeObject: {fileID: 0}
   mayInteract: 0
   inSight: 0
-  buildingMask:
-    serializedVersion: 2
-    m_Bits: 512
-  catMask:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!114 &1497433861452417658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,6 +556,54 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &7742594375919658971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8277509068330326977}
+  - component: {fileID: 5197808958263524181}
+  m_Layer: 10
+  m_Name: Raycaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8277509068330326977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7742594375919658971}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7226268419361476016}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5197808958263524181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7742594375919658971}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03d7b7650689bf4bb55d28a4a88c261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  confirmation: 0
+  fovMask:
+    serializedVersion: 2
+    m_Bits: 256
+  cat: {fileID: 0}
 --- !u!1 &8617280355339470169
 GameObject:
   m_ObjectHideFlags: 0
